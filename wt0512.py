@@ -47,17 +47,17 @@ def runGame():
     창 클래스
     """
     class window_model:
-        def __init__(self, window, bar, button, locate,ID):
+        def __init__(self, window, bar, buttonx, locate,ID):
             self.window = window
             self.bar = bar
-            self.button = button
+            self.buttonx = buttonx
             self.locate = locate
             self.ID=ID
 
         def constr(self):
             gamepad.blit(self.window[0], self.locate)
             gamepad.blit(self.bar[0], self.locate)
-            gamepad.blit(self.button[0], (self.locate[0] + self.bar[1] - self.button[1], self.locate[1]))
+            gamepad.blit(self.buttonx[0], (self.locate[0] + self.bar[1] - self.buttonx[1], self.locate[1]))
 
         def chrome_online(self,img1):
             gamepad.blit(img1[0],(self.locate[0]+self.window[1]/2-img1[1]/2,self.locate[1]+self.bar[2]+10))
@@ -84,7 +84,7 @@ def runGame():
             if event.type == MOUSEBUTTONDOWN and event.button == 1:
                 draw = True
                 ins=True
-        if window.locate[0] + window.bar[1]-window.button[1] <= mouse_x <= window.locate[0] + window.bar[1] and window.locate[1] <= mouse_y <= window.locate[1] + window.button[2] :
+        if window.locate[0] + window.bar[1]-window.buttonx[1] <= mouse_x <= window.locate[0] + window.bar[1] and window.locate[1] <= mouse_y <= window.locate[1] + window.button[2] :
             if event.type == MOUSEBUTTONDOWN and event.button == 1 and rec_sub(window,imp_range,mouse_x,mouse_y):
                 draw= False
                 imp_insert(window,imp_range,'rem')
@@ -108,7 +108,7 @@ def runGame():
                 window.locate = (newloc_x, newloc_y)
                 (init_x,init_y)=pygame.mouse.get_pos()
 
-        if window.locate[0]<=mouse_x<=window.locate[0]+window.bar[1]-window.button[1] and window.locate[1] <= mouse_y<=window.locate[1]+window.button[2]:
+        if window.locate[0]<=mouse_x<=window.locate[0]+window.bar[1]-window.buttonx[1] and window.locate[1] <= mouse_y<=window.locate[1]+window.buttonx[2]:
             if event.type==MOUSEBUTTONDOWN and event.button==1:
                 move=True
                 ins=True
